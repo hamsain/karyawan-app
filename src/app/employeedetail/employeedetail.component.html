@@ -1,0 +1,50 @@
+<mat-card class="detail-card">
+
+    <img class="img-circle" src="assets/images/avatar.png" alt="" align="midle">
+    <mat-card-content>
+            <mat-card-title>{{selectedData.username}}</mat-card-title>
+            <mat-card-subtitle>{{selectedData.firstName + " " + selectedData.lastName}}</mat-card-subtitle>
+            
+            <div class="info">
+                <div class="info-lable">First Name </div>
+                <div class="info-value">: {{ selectedData.firstName }} </div>
+            </div><br>
+            <div class="info">
+                <div class="info-lable">Last Name </div>
+                <div class="info-value">: {{ selectedData.lastName }} </div>
+            </div><br>
+            <div class="info">
+                <div class="info-lable">email</div>
+                <div class="info-value">: {{ selectedData.email }} </div>
+            </div><br>
+            <div class="info">
+                <div class="info-lable">Birth Date</div>
+                <div class="info-value">: {{ selectedData.birthDate }} </div>
+            </div><br>
+            <div class="info">
+                <div class="info-lable">Basic Salary</div>
+                <div class="info-value">: <strong>{{ formatRupiah(selectedData.basicSalary) }}</strong> </div>
+            </div><br>
+            <div class="info">
+                <div class="info-lable">Status</div>
+                <div class="info-value">: 
+                    <span class="active" *ngIf="selectedData.status == 'Active'">{{ selectedData.status }} </span>
+                    <span class="not-active" *ngIf="selectedData.status == 'Not Active'">{{ selectedData.status }} </span>
+                </div>
+            </div><br>
+            <div class="info">
+                <div class="info-lable">Group</div>
+                <div class="info-value">: {{ selectedData.group }} </div>
+            </div><br>
+            <div class="info">
+                <div class="info-lable">Description</div>
+                <div class="info-value">: {{ selectedData.description }} </div>
+            </div><br>
+
+          </mat-card-content>
+          <mat-card-actions align="end">
+            <button mat-raised-button color="primary" (click)="goBack()">OK</button>
+          </mat-card-actions>
+</mat-card>
+
+

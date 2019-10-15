@@ -1,0 +1,35 @@
+.detail-card{
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+}
+.img-circle {
+    border-radius: 50%;
+    z-index: 5;
+    height: 90px;
+    width: 90px;
+    border: 3px solid;
+    border-color: transparent;
+    border-color: rgba(255,255,255,0.2);
+}
+img{
+    vertical-align: middle;
+}
+.info{
+    width: 100%;
+}
+.info-lable{
+    width: 20%;
+    float: left;
+}
+.info-value{
+    width: 80%;
+    float: left;
+}
+.active{
+    color: #2f5ad4;
+}
+.not-active{
+    color: #c20505;
+}
+

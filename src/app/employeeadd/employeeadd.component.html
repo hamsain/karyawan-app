@@ -1,0 +1,97 @@
+<div class="add-box" fxLayout="row" fxLayoutAlign="center center" >
+    <!-- form login -->
+    <form [formGroup]="addForm" (ngSubmit)="submit()"> 
+        <mat-card class="add-card">
+                <mat-card-title>
+                    Add Employee
+                </mat-card-title>
+                <mat-card-content>
+                    <mat-form-field class="full-width">
+                        <mat-label>username</mat-label>
+                        <input type="text"  matInput  placeholder="username" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+                        <mat-hint *ngIf="submitted && f.username.errors" >
+                            <span class="error-text" *ngIf="f.username.errors.required">username is empty</span>
+                        </mat-hint>
+                    </mat-form-field>
+                    <mat-form-field class="half-width">
+                        <mat-label>First Name</mat-label>
+                        <input type="text"  matInput  placeholder="First Name" formControlName="firstname" [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }">
+                        <mat-hint *ngIf="submitted && f.firstname.errors" >
+                            <span class="error-text" *ngIf="f.firstname.errors.required">First Name is empty</span>
+                        </mat-hint>
+                    </mat-form-field>
+                    <mat-form-field class="half-width-last">
+                        <mat-label>Last Name</mat-label>
+                        <input type="text"  matInput  placeholder="Last Name" formControlName="lastname" [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }">
+                        <mat-hint *ngIf="submitted && f.lastname.errors" >
+                            <span class="error-text" *ngIf="f.lastname.errors.required">Last Name is empty</span>
+                        </mat-hint>
+                    </mat-form-field>
+                    <mat-form-field class="full-width">
+                        <mat-label>Email</mat-label>
+                        <input type="email"  matInput  placeholder="Email" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                        <mat-hint *ngIf="submitted && f.email.errors" >
+                            <span class="error-text" *ngIf="f.email.errors.required">email empty</span>
+                            <span class="error-text" *ngIf="f.email.errors.email">wrong email format</span>
+                        </mat-hint>
+                    </mat-form-field>
+                    <mat-form-field class="full-width">
+                        <mat-label>Birth Date</mat-label>
+                        <input matInput [max]="maxDate" [matDatepicker]="picker"  placeholder="Birth Date" formControlName="birthdate" [ngClass]="{ 'is-invalid': submitted && f.birthdate.errors }">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <mat-hint *ngIf="submitted && f.birthdate.errors" >
+                            <span class="error-text" *ngIf="f.birthdate.errors.required">Birth Date empty</span>
+                        </mat-hint>
+                    </mat-form-field>
+                    <mat-form-field class="full-width">
+                        <mat-label>Basic Salary</mat-label>
+                        <input type="number"  matInput  placeholder="Basic Salary" formControlName="basicsalary" [ngClass]="{ 'is-invalid': submitted && f.basicsalary.errors }">
+                        <mat-hint *ngIf="submitted && f.basicsalary.errors" >
+                            <span class="error-text" *ngIf="f.basicsalary.errors.required">Basic Salary empty</span>
+                        </mat-hint>
+                    </mat-form-field>
+                    <mat-form-field class="half-width">
+                        <mat-label>Status</mat-label>
+                        <mat-select placeholder="Select" formControlName="status" [ngClass]="{ 'is-invalid': submitted && f.status.errors }">
+                            <mat-option value="Active">Active</mat-option>
+                            <mat-option value="Not Active">Not Active</mat-option>
+                        </mat-select>
+                        <mat-hint *ngIf="submitted && f.status.errors" >
+                            <span class="error-text" *ngIf="f.status.errors.required">Status is empty</span>
+                        </mat-hint>
+                    </mat-form-field>
+                    <mat-form-field class="half-width-last">
+                        <mat-label>Group</mat-label>
+                        <input type="text" matInput placeholder="Select Group" aria-label="number" [formControl]="addForm.get('group')" [matAutocomplete]="auto" [ngClass]="{ 'is-invalid': submitted && f.group.errors }">
+                        <mat-autocomplete #auto="matAutocomplete">
+                            <mat-option *ngFor="let group of filteredGroups | async" [value]="group">
+                            {{group}}
+                            </mat-option>
+                        </mat-autocomplete>
+                        <mat-hint *ngIf="submitted && f.group.errors" >
+                            <span class="error-text" *ngIf="f.group.errors.required">Group is empty</span>
+                        </mat-hint>
+                    </mat-form-field>
+
+
+                    <mat-form-field class="full-width">
+                        <mat-label>Description</mat-label>
+                        <textarea matInput placeholder="Textarea" formControlName="description" [ngClass]="{ 'is-invalid': submitted && f.description.errors }"></textarea>
+                        <mat-hint *ngIf="submitted && f.description.errors" >
+                            <span class="error-text" *ngIf="f.description.errors.required">email empty</span>
+                        </mat-hint>
+                    </mat-form-field>
+
+                    
+                </mat-card-content>
+                <mat-card-actions align="end">
+                    <a mat-raised-button color="warn" (click)="gotoEmployee()">CANCEL</a>
+                    <button type="submit" mat-raised-button color="primary">SAVE</button>
+                </mat-card-actions>
+        </mat-card>
+    </form>
+    <!-- end form login -->
+            
+</div>
+    

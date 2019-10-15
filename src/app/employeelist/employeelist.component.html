@@ -1,0 +1,89 @@
+<div class="employee-content">
+    <div class="filter-container">
+        EMPLOYEE LIST
+        <a mat-icon-button color="warn" routerLink="/addemployee">
+            <mat-icon>add</mat-icon>
+        </a><br>
+        <!-- <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="username">
+        </mat-form-field>-->
+        <mat-form-field>
+            <input matInput [formControl]="filterUsername" placeholder="username">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput [formControl]="filterGroup" placeholder="group">
+        </mat-form-field>
+        <button mat-raised-button (click)="resetFilter()">reset</button>
+    </div>
+    
+    <div class="table-container mat-elevation-z8">
+        
+        <table mat-table [dataSource]="dataSource" matSort>
+        
+            <ng-container matColumnDef="username" sticky>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Username </th>
+                <td mat-cell *matCellDef="let row" (click)="getDetail(row)"> {{row.username}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="firstName" >
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> First Name </th>
+                <td mat-cell *matCellDef="let row" (click)="getDetail(row)"> {{row.firstName}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="lastName" >
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </th>
+                <td mat-cell *matCellDef="let row" (click)="getDetail(row)"> {{row.lastName}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> email </th>
+                <td mat-cell *matCellDef="let row" (click)="getDetail(row)"> {{row.email}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="birthDate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Birth Date </th>
+                <td mat-cell *matCellDef="let row"> {{row.birthDate}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="basicSalary">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Basic Salary</th>
+                <td mat-cell *matCellDef="let row"> {{ formatRupiah(row.basicSalary) }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> status </th>
+                <td mat-cell *matCellDef="let row"> {{row.status}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="group">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> group </th>
+                <td mat-cell *matCellDef="let row"> {{row.group}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+                <td mat-cell *matCellDef="let row"> {{row.description}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="action" stickyEnd>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> action </th>
+                <td mat-cell *matCellDef="let row"> 
+                    <button mat-raised-button color="primary" (click)="actionButton('edit')" class="margin-right-10">Edit</button>
+                    <button mat-raised-button color="warn" (click)="actionButton('delete')">Delete</button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" >
+            </tr>
+        </table>
+        
+        
+    </div>
+    <div class="footer-container">
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>
+    
+
+</div>
+
